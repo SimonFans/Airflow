@@ -7,7 +7,7 @@ default_args = {
     "depend_on_past" : False,
     "email_on_failure" : False,
     "email_on_retry" : False,
-    "email" : "ximengzhao1220@gmail.com",
+    "email" : "xxx@gmail.com",
     "retries" : 1,
     "retry_delay": timedelta(minutes=5)
 }
