@@ -1,0 +1,8 @@
+1. 
+
+depends_on_past: (boolean) when set to True, keeps a task from getting triggered if the previous schedule for the task hasn’t succeeded.
+
+args = {
+    'owner': 'airflow',
+    'depends_on_past': True,
+}
