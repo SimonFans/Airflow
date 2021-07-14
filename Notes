@@ -6,3 +6,21 @@ args = {
     'owner': 'airflow',
     'depends_on_past': True,
 }
+
+
+
+2. Inside the docker web-server container, you can turn on/off the toggle to pause & unpause the dags
+command: airflow dags pause
+command: airflow dags unpause
+
+3. Trigger your dag in the docker container
+command: airflow dags trigger -e
+
+4. List your dags
+command: airflow dags list
+
+
+
+
+
+
