@@ -19,8 +19,13 @@ command: airflow dags trigger -e
 4. List your dags
 command: airflow dags list
 
+5. List tasks in airflow Dags:
+command: airflow tasks list example_dag
 
+6. Test your dags
+If you add a new task there, you can run below command to test
+command: airflow tasks test example_dag bash_print_date1 2021-01-01
 
-
-
+7. Rerun your past dag runs (backfill)
+command: airflow dags backfill -s 2021-01-01 -e 2021-01-05 --reset-dagruns example_dag
 
