@@ -1,0 +1,4 @@
+pip install apache-airflow --constraint
+https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt
+
+Where AIRFLOW_VERSION is the version of Airflow you want to install, 2.0.0 and PYTHON_VERSION, your python version, 3.6, 3.7 or 3.8.
