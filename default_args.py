@@ -12,7 +12,8 @@ default_args = {
   'retry_exponential_backoff': True,
   'retry_delay' = timedelta(seconds=300),
   'retries': 3
-  'depend_on_past': False
+  'depend_on_past': False,
+  'sla': timedelta(seconds=30)
 }
 
 with DAG('My dag name',
