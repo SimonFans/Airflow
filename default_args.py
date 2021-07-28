@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 default_args = {
   'owner': 'airflow',
   'start_date': datetime(2020,1,30),
-  'email': ['ximengzhao1220@gmail.com'],
+  'email': ['xxx@gmail.com'],
   'email_on_failure': True,
   'email_on_retry': True,
   'retry_exponential_backoff': True,
