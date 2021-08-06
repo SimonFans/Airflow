@@ -45,6 +45,30 @@ from airflow.utils.helpers import cross_downstream
 cross_downstream([A,B], [C,D,E])
 [C,D,E] >> F
 
+10. Task priority:
+You want to prioritize one task to go first. Add priority_weight parameter into your operator. But make sure all tasks should be in the same pool. The default value of priority_weight is 1.
+Example:
+process_a = BashOperator(
+            task_id = 'process_a',
+            bash_command="echo '{{ ti.try_number }}' && sleep 20",
+            priority_weight=2,
+            pool="process_tasks"
+)
+process_b = BashOperator(
+            task_id = 'process_b',
+            bash_command="echo '{{ ti.try_number }}' && sleep 20",
+            pool="process_tasks"
+)
+process_c = BashOperator(
+            task_id = 'process_c',
+            bash_command="echo '{{ ti.try_number }}' && sleep 20",
+            priority_weight=3,
+            pool="process_tasks"
+)
+You might have different numbers but the point is, the priority_weights should be set as follow:
+process_c > process_a > process_b
+Notice that by default, process_b has a priority_weight equals to 1 so no need to specify it here.
+
 
 
 
