@@ -69,6 +69,27 @@ You might have different numbers but the point is, the priority_weights should b
 process_c > process_a > process_b
 Notice that by default, process_b has a priority_weight equals to 1 so no need to specify it here.
 
+11. Trigger_rules
+- all_success
+Example: [t1, t2] >> t3
+Explain: If add rule to t3, then t3 will be triggered only when t1 and t2 are succcessful. If t2 is skipped, then t3 will also be skipped.
+
+- all_failed
+Explain: All upstreaming tasks failed then triggered otherwise skip.
+
+- all_done
+Explain: not care the upstreaming tasks state just trigger to run when upstreaming tasks are done
+
+- one_failed
+- one_success
+- non_failed
+Example: [t1, t2] >> t3
+Explain: if t1 and t2 are skipped, then t3 trigger.
+- non_failed_or_skipped
+Example: [t1, t2] >> t3
+Explain: if t1 and t2 are skipped, then t3 skip.
+- non_skipped
+
 
 
 
