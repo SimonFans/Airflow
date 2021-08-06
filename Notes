@@ -1,13 +1,14 @@
-1. 
+1. depends_on_past && wait_for_downstream
 
-depends_on_past: (boolean) when set to True, keeps a task from getting triggered if the previous schedule for the task hasn’t succeeded.
+depends_on_past: (boolean) when set to True, keeps a task from getting triggered if the previous schedule for the task hasn’t succeeded. only apply for a single task
+Example: if you set epends_on_past=True in the task C, then Task C in the Dag run2 will only run when Task C in the Dag run1 succeed or skipped.
+Dag run1: A-> B-> C
+Dag run2: A-> B-> C
 
-args = {
-    'owner': 'airflow',
-    'depends_on_past': True,
-}
-
-
+wait_for_downstream: (boolean) when set to True, it set depends_on_past=True by default. will prevent downstream tasks of the current dagrun from running if the upstream task instances of previous dagrun are not in the success state.
+Example:if you set wait_for_downstream=true in the Task A, then Task A in the Dag run2 will not run until the Task A and its downstream Task B in the Dag run1 has succeed or skipped
+Dag run1: A-> B-> C
+Dag run2: A-> B-> C
 
 2. Inside the docker web-server container, you can turn on/off the toggle to pause & unpause the dags
 command: airflow dags pause <dag_id>
