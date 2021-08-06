@@ -30,3 +30,22 @@ command: airflow tasks test example_dag bash_print_date1 2021-01-01
 7. Rerun your past dag runs (backfill)
 command: airflow dags backfill -s 2021-01-01 -e 2021-01-05 --reset-dagruns example_dag
 
+8. Pool
+definition: the pool allows you to limit concurrency for a set of tasks by default. With Airflow, you can run up to 32 tasks at the same time. 
+use case: when some specific tasks that consuming running very long time. You might want to limit concurrency for those tasks to 1 to execute them sequentially, one after the other.
+Task running = 1 worker slot taken
+All tasks go to default_pool (128 slots), you can find it from Admin -> pool
+How to use it:
+If you want to run some big tasks one by one, then go to set up a new pool. Set the slots to be 1, which means all tasks will take up only one slots (run 1 by 1). Add pool pararmeter into the Operator such as pool = "<pool name>"
+
+9. Use cross_downstream to solve the task dependencies between two lists 
+Airflow doesn't allow: such as [A,B] >> [C,D,E] >> F
+So you need to import:
+from airflow.utils.helpers import cross_downstream
+cross_downstream([A,B], [C,D,E])
+[C,D,E] >> F
+
+
+
+
+
