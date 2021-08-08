@@ -97,7 +97,23 @@ execution_timeout = timedelta(seconds = 12)
 13 Providers
 After Airflow version > 2.0, you can go to registry.astronomer.io to search the provider you want, for example search s3keysensor, you wll be told how to install Amazon dependencies.
 
+14 Check installed providers in Airflow
+Copy scheduler container id, then type docker exec <scheduler container id> airflow info
 
+15 How to install a new provider
+1. Search the provider name and version from registry.astronomer.io
+2. Create a requirements.txt file, and put the provider name and version in it, such as airflow-provder-great-expectations==0.0.6
+3. Build your own docker image. At the same path of docker-compose.yml, create a Dockerfile. 
+FROM apache/airflow:2.1.0
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+4. Go back to docker-compose.yml, instead of image: apache/airflow:2.1.0, change to 
+version: '3'
+x-airflow-common:
+  &airflow-common
+  build:
+    context: .
+    
 
 
 
