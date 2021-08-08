@@ -1,3 +1,9 @@
+'''
+By default, return value of each operator will auto do xcom push. If you don't want to do xcom push for a task, then you can set do_xcom_push = False
+{{ti.xcom_push(key='<>',value='<>')}}
+xcom = ti.xcom_pull(task_ids = ['task1_id', 'task2_id', 'task3_id'],key = 'return_value'), key should be unique.
+'''
+
 from __future__ import print_function
 import airflow
 from airflow import DAG
@@ -43,13 +49,13 @@ with DAG(
 	t1 = PythonOperator(
         task_id='push_values',
         python_callable=generate_values,
-        xcom_push=True,
+        do_xcom_push=True,
         provide_context=True )
 
 	t2 = PythonOperator(
         task_id='pull_values',
         python_callable=manipulate_values,
-        xcom_push=True,
+        do_xcom_push=True,
         provide_context=True )
 
 	start >> t1 >> t2
