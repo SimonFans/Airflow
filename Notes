@@ -93,7 +93,11 @@ Explain: if t1 and t2 are skipped, then t3 skip.
 12. Timeout
 # Add this to the operator. If the task runs over xxx seconds, then it will mark as failure.
 execution_timeout = timedelta(seconds = 12)
- 
+
+13 Providers
+After Airflow version > 2.0, you can go to registry.astronomer.io to search the provider you want, for example search s3keysensor, you wll be told how to install Amazon dependencies.
+
+
 
 
 
