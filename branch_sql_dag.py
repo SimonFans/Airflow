@@ -13,7 +13,7 @@ default_args = {
     'owner': 'Ximeng',
     'depends_on_past': False,
     'start_date': datetime(2021, 8, 13),
-    'email': ['ximengzhao1220@gmail.com'],
+    'email': ['xxx@gmail.com'],
     'email_on_failure': True,
     'email_on_retry': False,
     'retries': 1,
