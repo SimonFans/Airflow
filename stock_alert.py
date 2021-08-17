@@ -96,7 +96,7 @@ t5 = PythonOperator(
 send_email = EmailOperator(
         task_id = 'Send_Email',
         to = ['xxx@gmail.com'],
-        subject = 'Airflow: Ximeng Stock Check!!',
+        subject = 'Airflow: Stock Check!!',
         html_content = """
                         <p>You may consider to sell: </p>
                         <p>{{task_instance.xcom_pull(task_ids = 'check_stock')}}<br><br>
