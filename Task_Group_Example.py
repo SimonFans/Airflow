@@ -23,4 +23,4 @@ with DAG('parent_dag', default_args=default_args, schedule_interval= '@daily', c
 
     end = BashOperator(task_id = "end", bash_command = "echo 'end'")
 
-    start >> [group_training_task] >> end
+    start >> group_training_task >> end
