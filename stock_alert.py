@@ -17,7 +17,7 @@ default_args = {
     'owner': 'Ximeng',
     'depends_on_past': False,
     'start_date': datetime(2021, 8, 15),
-    'email': ['ximengzhao1220@gmail.com'],
+    'email': [''],
     'email_on_failure': True,
     'email_on_retry': False,
     'retries': 1,
@@ -144,9 +144,9 @@ t6 = PythonOperator(
 
 send_email = EmailOperator(
         task_id = 'Send_Email',
-        to = ['ximengzhao1220@gmail.com', 'ritajiaxinwang1233@gmail.com'],
+        to = ['', ''],
         #
-        subject = 'Airflow Alert: Ximeng Stock Check!!',
+        subject = 'Airflow Alert: Stock Check!!',
         html_content = """
                         <p><mark>Current Stocks Market $: </mark></p>
                         {{task_instance.xcom_pull(task_ids = 'check_stock')}}<br>
